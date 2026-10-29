@@ -1240,6 +1240,34 @@ async def staff_ticket_history(interaction: discord.Interaction, member: discord
     await interaction.response.send_message(embed=discord.Embed(title='Staff Ticket History',description='\n'.join(lines)[:4000] or 'No tickets.',color=embed_color(interaction.guild.id)),ephemeral=True,allowed_mentions=discord.AllowedMentions.none())
 
 
+@bot.tree.command(name='help', description='Show the Crew Me command guide')
+@app_commands.guild_only()
+async def crewme_help(interaction: discord.Interaction):
+    guide_url = "https://crewme-gg.github.io/Crew-me-site/commands.html"
+
+    embed = discord.Embed(
+        title="Crew Me Command Guide",
+        description=(
+            "Find commands for staff activity, absences, warnings, "
+            "meetings, tickets, and management reviews.\n\n"
+            f"[Open the full command guide]({guide_url})"
+        ),
+        color=embed_color(interaction.guild.id)
+    )
+    embed.add_field(
+        name="Quick start",
+        value=(
+            "`/activity` — View weekly activity\n"
+            "`/meetings` — View upcoming meetings\n"
+            "`/crewme_info` — Learn about Crew Me"
+        ),
+        inline=False
+    )
+    embed.set_footer(text="Some commands require management permissions.")
+
+    await interaction.response.send_message(embed=embed, ephemeral=True)
+
+
 @bot.tree.command(name='crewme_info',description='Show Crew Me public bot information')
 @app_commands.guild_only()
 async def staffy_info(interaction: discord.Interaction):
