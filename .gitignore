@@ -1,0 +1,21 @@
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Databases and runtime data
+*.sqlite
+*.sqlite3
+*.db
+backups/
+
+# Python generated files
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+
+# Temporary bot backups
+bot_backup.py
+bot_before_*.py
+staffy_before_*.sqlite3
